@@ -16,7 +16,7 @@ A pre-configured SearXNG template for Railway, optimized for LLM tool use.
 
 ### Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/5vM9JY?referralCode=NhCCIt&utm_medium=integration&utm_source=template&utm_campaign=generic)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/bNKW-H?referralCode=NhCCIt&utm_medium=integration&utm_source=template&utm_campaign=generic)
 
 1. Deploy this repo
 2. Add a Redis service
