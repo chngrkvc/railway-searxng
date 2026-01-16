@@ -1,0 +1,153 @@
+use_default_settings: true
+
+general:
+  instance_name: "searxng"
+
+server:
+  secret_key: "${SEARXNG_SECRET_KEY}"
+  limiter: false
+  public_instance: false
+  method: "GET"
+
+search:
+  safe_search: 0
+  default_lang: "en"
+  autocomplete: ""
+  formats:
+    - json
+  max_page: 0
+
+outgoing:
+  request_timeout: 10.0
+  max_request_timeout: 20.0
+  pool_connections: 100
+  pool_maxsize: 20
+  enable_http2: true
+  retries: 2
+
+engines:
+  - name: duckduckgo
+    shortcut: ddg
+    disabled: false
+    weight: 1.5
+  - name: brave
+    shortcut: br
+    disabled: false
+    weight: 1.5
+  - name: qwant
+    shortcut: qw
+    disabled: false
+    weight: 1.0
+  - name: mojeek
+    shortcut: mj
+    disabled: false
+    weight: 0.8
+  - name: github
+    shortcut: gh
+    disabled: false
+    weight: 1.2
+  - name: stackoverflow
+    shortcut: so
+    disabled: false
+    weight: 1.2
+  - name: mdn
+    shortcut: mdn
+    disabled: false
+    weight: 1.0
+  - name: npm
+    shortcut: npm
+    disabled: false
+    weight: 0.8
+  - name: pypi
+    shortcut: pypi
+    disabled: false
+    weight: 0.8
+  - name: crates.io
+    shortcut: crates
+    disabled: false
+    weight: 0.8
+  - name: pkg.go.dev
+    shortcut: gopkg
+    disabled: false
+    weight: 0.8
+  - name: docker hub
+    shortcut: dh
+    disabled: false
+    weight: 0.8
+  - name: hackernews
+    shortcut: hn
+    disabled: false
+    weight: 0.8
+  - name: wikipedia
+    shortcut: wp
+    disabled: false
+    weight: 1.0
+  - name: wikidata
+    shortcut: wd
+    disabled: false
+    weight: 0.8
+  - name: arch linux wiki
+    shortcut: aw
+    disabled: false
+    weight: 0.8
+
+  # Academic/Research engines
+  - name: arxiv
+    shortcut: arx
+    disabled: false
+    weight: 1.2
+  - name: semantic scholar
+    shortcut: ss
+    disabled: false
+    weight: 1.0
+  - name: crossref
+    shortcut: cr
+    disabled: false
+    weight: 0.8
+  - name: pubmed
+    shortcut: pm
+    disabled: false
+    weight: 0.8
+
+  # Additional dev/docs engines
+  - name: gitlab
+    shortcut: gl
+    disabled: false
+    weight: 0.8
+  - name: codeberg
+    shortcut: cb
+    disabled: false
+    weight: 0.6
+  - name: free software directory
+    shortcut: fsd
+    disabled: false
+    weight: 0.5
+
+  # Knowledge/Reference
+  - name: currency
+    disabled: false
+    weight: 1.0
+  - name: wikibooks
+    shortcut: wb
+    disabled: false
+    weight: 0.6
+  - name: wikisource
+    shortcut: ws
+    disabled: false
+    weight: 0.5
+
+  # Disabled engines
+  - name: google
+    disabled: true
+  - name: bing
+    disabled: true
+  - name: yahoo
+    disabled: true
+  - name: yandex
+    disabled: true
+  - name: baidu
+    disabled: true
+  - name: ahmia
+    disabled: true
+  - name: torch
+    disabled: true
