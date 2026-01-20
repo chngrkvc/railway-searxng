@@ -1,5 +1,8 @@
 use_default_settings: true
 
+valkey:
+  url: "${SEARXNG_REDIS_URL}"
+
 general:
   instance_name: "searxng"
 
@@ -15,131 +18,97 @@ search:
   autocomplete: ""
   formats:
     - json
-  max_page: 0
+  max_page: 5
 
 outgoing:
-  request_timeout: 10.0
-  max_request_timeout: 20.0
+  request_timeout: 15.0
+  max_request_timeout: 30.0
   pool_connections: 100
   pool_maxsize: 20
   enable_http2: true
   retries: 2
 
 engines:
+  # General search engines
   - name: duckduckgo
     shortcut: ddg
-    disabled: false
     weight: 1.5
   - name: brave
     shortcut: br
-    disabled: false
     weight: 1.5
-  - name: qwant
-    shortcut: qw
-    disabled: false
-    weight: 1.0
-  - name: mojeek
-    shortcut: mj
-    disabled: false
+  - name: startpage
+    shortcut: sp
+    weight: 1.4
+  - name: bing
+    shortcut: bi
+    weight: 1.3
+
+  # Knowledge/Reference
+  - name: wikipedia
+    shortcut: wp
+    weight: 1.5
+  - name: wikidata
+    shortcut: wd
     weight: 0.8
+  - name: wikibooks
+    shortcut: wb
+    weight: 0.6
+  - name: arch linux wiki
+    shortcut: aw
+    weight: 0.8
+  - name: currency
+    weight: 1.0
+
+  # Developer resources
   - name: github
     shortcut: gh
-    disabled: false
     weight: 1.2
+  - name: gitlab
+    shortcut: gl
+    weight: 0.8
   - name: stackoverflow
     shortcut: so
-    disabled: false
     weight: 1.2
   - name: mdn
     shortcut: mdn
-    disabled: false
     weight: 1.0
+  - name: hackernews
+    shortcut: hn
+    weight: 0.8
+
+  # Package registries
   - name: npm
     shortcut: npm
-    disabled: false
     weight: 0.8
   - name: pypi
     shortcut: pypi
-    disabled: false
     weight: 0.8
   - name: crates.io
     shortcut: crates
-    disabled: false
     weight: 0.8
   - name: pkg.go.dev
     shortcut: gopkg
-    disabled: false
     weight: 0.8
   - name: docker hub
     shortcut: dh
-    disabled: false
-    weight: 0.8
-  - name: hackernews
-    shortcut: hn
-    disabled: false
-    weight: 0.8
-  - name: wikipedia
-    shortcut: wp
-    disabled: false
-    weight: 1.0
-  - name: wikidata
-    shortcut: wd
-    disabled: false
-    weight: 0.8
-  - name: arch linux wiki
-    shortcut: aw
-    disabled: false
     weight: 0.8
 
-  # Academic/Research engines
+  # Academic/Research
   - name: arxiv
     shortcut: arx
-    disabled: false
-    weight: 1.2
+    weight: 1.5
   - name: semantic scholar
     shortcut: ss
-    disabled: false
     weight: 1.0
   - name: crossref
     shortcut: cr
-    disabled: false
     weight: 0.8
   - name: pubmed
     shortcut: pm
-    disabled: false
     weight: 0.8
-
-  # Additional dev/docs engines
-  - name: gitlab
-    shortcut: gl
-    disabled: false
-    weight: 0.8
-  - name: codeberg
-    shortcut: cb
-    disabled: false
-    weight: 0.6
-  - name: free software directory
-    shortcut: fsd
-    disabled: false
-    weight: 0.5
-
-  # Knowledge/Reference
-  - name: currency
-    disabled: false
-    weight: 1.0
-  - name: wikibooks
-    shortcut: wb
-    disabled: false
-    weight: 0.6
-  - name: wikisource
-    shortcut: ws
-    disabled: false
-    weight: 0.5
 
   # Disabled engines
   - name: google
-    disabled: true
-  - name: bing
     disabled: true
   - name: yahoo
     disabled: true
@@ -147,7 +116,17 @@ engines:
     disabled: true
   - name: baidu
     disabled: true
+  - name: qwant
+    disabled: true
+  - name: mojeek
+    disabled: true
   - name: ahmia
     disabled: true
   - name: torch
+    disabled: true
+  - name: codeberg
+    disabled: true
+  - name: free software directory
+    disabled: true
+  - name: wikisource
     disabled: true
