@@ -30,12 +30,6 @@ engines:
   - name: duckduckgo
     shortcut: ddg
     weight: 1.5
-  - name: brave
-    shortcut: br
-    weight: 1.5
-  - name: startpage
-    shortcut: sp
-    weight: 1.4
   - name: bing
     shortcut: bi
     weight: 1.3
