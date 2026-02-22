@@ -5,7 +5,7 @@ general:
 
 server:
   secret_key: "${SEARXNG_SECRET_KEY}"
-  limiter: false
+  limiter: true
   public_instance: false
   method: "GET"
 
@@ -15,11 +15,11 @@ search:
   autocomplete: ""
   formats:
     - json
-  max_page: 5
+  max_page: 2
 
 outgoing:
-  request_timeout: 15.0
-  max_request_timeout: 30.0
+  request_timeout: 25.0
+  max_request_timeout: 50.0
   pool_connections: 100
   pool_maxsize: 20
   enable_http2: true
@@ -27,8 +27,9 @@ outgoing:
 
 engines:
   # General search engines
-  - name: duckduckgo
-    shortcut: ddg
+  - name: yahoo
+    weight: 1
+  - name: qwant
     weight: 1.5
   - name: bing
     shortcut: bi
@@ -101,13 +102,9 @@ engines:
   # Disabled engines
   - name: google
     disabled: true
-  - name: yahoo
-    disabled: true
   - name: yandex
     disabled: true
   - name: baidu
-    disabled: true
-  - name: qwant
     disabled: true
   - name: mojeek
     disabled: true
