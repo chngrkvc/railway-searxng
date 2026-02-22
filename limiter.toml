@@ -1,0 +1,17 @@
+[botdetection.ip_limit]
+# Bir IP'nin belirli bir sürede yapabileceği maksimum istek
+# Hatalı istekler için ceza puanı
+max_score = 14.0
+# Her saniye puandan ne kadar düşüleceği (hız sınırı)
+regen_rate = 0.003
+
+[botdetection.ip_lists]
+# Güvendiğiniz IP'leri buraya ekleyebilirsiniz (kendi IP'niz gibi)
+pass_ip = [
+    "127.0.0.1",
+]
+
+[ratelimit]
+# Genel istek sınırlama
+request_limit = 10
+window_size = 3600
